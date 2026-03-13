@@ -34,3 +34,37 @@ Administrator --> createClass
 Administrator --> cancelSession
 
 ```
+
+Tarea 2.
+
+```mermaid
+
+sequenceDiagram
+
+actor Partner
+participant WebInterface
+participant ReservationManager
+participant Database
+
+Partner->>WebInterface: confirmReservation
+WebInterface->>ReservationManager: requestReservation
+
+ReservationManager->>Database: checkAvailability
+Database-->>ReservationManager: availabilityResult
+
+alt spots available
+
+ReservationManager->>Database: saveReservation
+Database-->>ReservationManager: success
+ReservationManager-->>WebInterface: reservationConfirmed
+WebInterface-->>Partner: showSuccessMessage
+
+else no spots available
+
+ReservationManager->>Database: addToWaitingList
+ReservationManager-->>WebInterface: waitingListNotification
+WebInterface-->>Partner: showWaitingListMessage
+
+end
+
+```
