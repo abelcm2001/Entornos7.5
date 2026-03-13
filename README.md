@@ -68,3 +68,25 @@ WebInterface-->>Partner: showWaitingListMessage
 end
 
 ```
+
+Tarea 3
+
+```mermaid
+
+flowchart LR
+
+Partner[Partner]
+App[GymApp / Interface]
+BookingSystem[BookingSystem]
+GroupClass[GroupClass]
+Database[Database]
+
+Partner -- 1: requestBooking --> App
+App -- 1.1: checkAvailability --> BookingSystem
+BookingSystem -- 1.1.1: getAvailableSpots --> GroupClass
+GroupClass -- 1.1.2: availableSpots --> BookingSystem
+BookingSystem -- 1.2: saveBooking --> Database
+BookingSystem -- 1.3: confirmBooking --> App
+App -- 2: showConfirmation --> Partner
+
+```
