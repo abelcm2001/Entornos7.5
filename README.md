@@ -90,10 +90,9 @@ BookingSystem -- 1.3: confirmBooking --> App
 App -- 2: showConfirmation --> Partner
 
 ```
+Tarea 4
 
 ```mermaid
-
-Tarea 4
 
 flowchart TD
 
