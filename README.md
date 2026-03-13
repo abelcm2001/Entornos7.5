@@ -123,3 +123,25 @@ D --> E
 E --> End
 
 ```
+
+Tarea 5
+
+```mermaid
+
+stateDiagram
+
+[*] --> Pending : createReservation
+
+Pending --> Confirmed : confirm
+Pending --> Cancelled : cancel
+
+Confirmed --> Cancelled : cancel
+Confirmed --> Completed : checkIn
+
+Confirmed --> NoShow : classStarts / noCheckIn
+
+Completed --> [*]
+Cancelled --> [*]
+NoShow --> [*]
+
+```
